@@ -1,0 +1,450 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0061)http://127.0.0.1:8080/web/GetTableInfo.action?tableName=ECI43 -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=Big5">
+
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>Device Data Explorer</title>
+
+<!-- Bootstrap Core CSS -->
+<link href="./Device Data Explorer_files/bootstrap.min.css" rel="stylesheet">
+
+<!-- MetisMenu CSS -->
+<link href="./Device Data Explorer_files/metisMenu.min.css" rel="stylesheet">
+
+<!-- Timeline CSS -->
+<link href="./Device Data Explorer_files/timeline.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="./Device Data Explorer_files/sb-admin-2.css" rel="stylesheet">
+
+<!-- Morris Charts CSS -->
+<link href="./Device Data Explorer_files/morris.css" rel="stylesheet">
+
+<!-- Custom Fonts -->
+<link href="./Device Data Explorer_files/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+<script src="./Device Data Explorer_files/Chart.min.js"></script>
+
+</head>
+
+<body>
+
+	<div id="wrapper">
+
+		<!-- Navigation -->
+		<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand">Device Data Explorer</a>
+		</div>
+		<!-- /.navbar-header -->
+
+		<ul class="nav navbar-top-links navbar-right">
+			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="http://127.0.0.1:8080/web/GetTableInfo.action?tableName=ECI43#"> <i class="fa fa-user fa-fw"></i>
+					<i class="fa fa-caret-down"></i>
+			</a>
+				<ul class="dropdown-menu dropdown-user">
+					
+
+					<li><a href="http://127.0.0.1:8080/web/Logout.action"> 
+						<i class="fa fa-sign-out fa-fw"></i> Logout
+					</a></li>
+				</ul> <!-- /.dropdown-user --></li>
+			<!-- /.dropdown -->
+		</ul>
+		<!-- /.navbar-top-links -->
+
+		<div class="navbar-default sidebar" role="navigation">
+			<div class="sidebar-nav navbar-collapse">
+				<ul class="nav" id="side-menu">
+					<li><a href="http://127.0.0.1:8080/web/GetTableInfo.action?tableName=ECI43#"><i class="fa fa-files-o fa-fw"></i> Device List<span class="fa arrow"></span></a>
+						<ul class="nav nav-second-level">
+							
+							
+								
+									
+								
+								<li><a href="http://127.0.0.1:8080/web/GetTableInfo.action?tableName=ECI43"> ECI43
+								</a></li>
+							
+								
+									
+								
+								<li><a href="http://127.0.0.1:8080/web/GetTableInfo.action?tableName=IA1000"> IA1000
+								</a></li>
+							
+								
+									
+								
+								<li><a href="http://127.0.0.1:8080/web/GetTableInfo.action?tableName=QX_IO"> QX_IO
+								</a></li>
+							
+						</ul> 
+						<!-- /.nav-second-level -->
+					</li>
+						
+					<li><a href="http://127.0.0.1:8080/web/GetTableInfo.action?tableName=ECI43#"><i class="fa fa-files-o fa-fw"></i> About <span class="fa arrow"></span></a>
+						<ul class="nav nav-second-level">
+							<li>
+                            	<a href="http://127.0.0.1:8080/web/GetTableInfo.action?tableName=ECI43#">The Device Data Explorer provides a convenient Web Service for users to monitor the device connecting with IOT gateway.
+                            		When the devices link with the gateway through BLE, Modbus, IO, or other interfaces, the gateway regularly collects the data from these devices
+                            		and upload these data to database. By synchronizing with database, the Device Data Explorer visualizes the data storing in the database and 
+                            		immediately display them in different kinds of charts for users.
+                            	</a>
+                            </li>
+						</ul> 
+						<!-- /.nav-second-level -->
+					</li>
+				</ul>
+			</div>
+			<!-- /.sidebar-collapse -->
+		</div>
+		<!-- /.navbar-static-side --> </nav>
+
+		<div id="page-wrapper">
+			<div class="row">
+				<div class="col-lg-12">
+					<h1 class="page-header">The Device Record of ECI43</h1>
+				</div>
+				<!-- /.col-lg-12 -->
+			</div>
+
+			<div class="row">
+				<div class="col-lg-8">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<i class="fa fa-bar-chart-o fa-fw"></i>Line Chart
+						</div>
+						<!-- /.panel-heading -->
+						<div class="panel-body">
+							<!--div id="morris-area-chart"></div-->
+							<canvas id="device-chart" width="1000" height="400" style="width: 1000px; height: 400px;"></canvas>
+						</div>
+						<!-- /.panel-body -->
+					</div>
+					<!-- /.panel -->
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<i class="fa fa-bar-chart-o fa-fw"></i> Table
+						</div>
+						<!-- /.panel-heading -->
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-lg-12">
+									<div class="table-responsive">
+										<table class="table table-bordered table-hover table-striped">
+											<thead>
+												<tr>
+													
+														<th>item</th>
+													
+														<th>updateTime</th>
+													
+														<th>VL1</th>
+													
+														<th>I2</th>
+													
+														<th>kW3</th>
+													
+														<th>kWh4</th>
+													
+												</tr>
+											</thead>
+											<tbody>
+												
+													<tr>
+														
+															<td>1</td>
+														
+															<td>2016-02-03 11:02:39</td>
+														
+															<td>5.0</td>
+														
+															<td>9.04</td>
+														
+															<td>2.111</td>
+														
+															<td>0.82</td>
+														
+													</tr>
+												
+													<tr>
+														
+															<td>2</td>
+														
+															<td>2016-02-03 11:02:49</td>
+														
+															<td>0.35</td>
+														
+															<td>9.46</td>
+														
+															<td>5.29</td>
+														
+															<td>4.42</td>
+														
+													</tr>
+												
+													<tr>
+														
+															<td>3</td>
+														
+															<td>2016-02-03 11:02:59</td>
+														
+															<td>7.99</td>
+														
+															<td>8.83</td>
+														
+															<td>5.5133</td>
+														
+															<td>5.04</td>
+														
+													</tr>
+												
+													<tr>
+														
+															<td>4</td>
+														
+															<td>2016-02-03 11:03:09</td>
+														
+															<td>6.47</td>
+														
+															<td>4.34</td>
+														
+															<td>3.68</td>
+														
+															<td>7.14</td>
+														
+													</tr>
+												
+													<tr>
+														
+															<td>5</td>
+														
+															<td>2016-02-03 11:03:19</td>
+														
+															<td>0.222</td>
+														
+															<td>9.46</td>
+														
+															<td>0.35</td>
+														
+															<td>2.61</td>
+														
+													</tr>
+												
+													<tr>
+														
+															<td>6</td>
+														
+															<td>2016-02-03 11:03:29</td>
+														
+															<td>4.83</td>
+														
+															<td>3.36</td>
+														
+															<td>5.13</td>
+														
+															<td>6.4</td>
+														
+													</tr>
+												
+											</tbody>
+										</table>
+									</div>
+									<!-- /.table-responsive -->
+								</div>
+								<!-- /.col-lg-12 (nested) -->
+								<div class="col-lg-8">
+									<div id="morris-bar-chart"></div>
+								</div>
+								<!-- /.col-lg-8 (nested) -->
+							</div>
+							<!-- /.row -->
+						</div>
+						<!-- /.panel-body -->
+					</div>
+
+				</div>
+				<!-- /.col-lg-8 -->
+
+				<div class="col-lg-4">
+					<!-- /.panel -->
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<i class="fa fa-bar-chart-o fa-fw"></i> Bar Chart
+						</div>
+						<div class="panel-body">
+							<canvas id="bar-chart" width="500" height="400" style="width: 500px; height: 400px;"></canvas>
+						</div>
+						<!-- /.panel-body -->
+					</div>
+					<!-- /.panel -->
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<i class="fa fa-bar-chart-o fa-fw"></i> The latest information in Pie Chart
+						</div>
+						<div class="panel-body">
+							<canvas id="pie-chart" width="500" height="400" style="width: 500px; height: 400px;"></canvas>
+						</div>
+						<!-- /.panel-body -->
+					</div>
+					<!-- /.panel -->
+				</div>
+				<!-- /.col-lg-4 -->
+
+			</div>
+			<!-- /.row -->
+
+		</div>
+		<!-- /#page-wrapper -->
+
+	</div>
+	<!-- /#wrapper -->
+
+	<!-- jQuery -->
+	<script src="./Device Data Explorer_files/jquery.min.js"></script>
+
+	<!-- Bootstrap Core JavaScript -->
+	<script src="./Device Data Explorer_files/bootstrap.min.js"></script>
+
+	<!-- Metis Menu Plugin JavaScript -->
+	<script src="./Device Data Explorer_files/metisMenu.min.js"></script>
+
+	<!-- Morris Charts JavaScript -->
+	<script src="./Device Data Explorer_files/raphael-min.js"></script>
+	<script src="./Device Data Explorer_files/morris.min.js"></script>
+	<script src="./Device Data Explorer_files/morris-data.js"></script>
+
+	<!-- Custom Theme JavaScript -->
+	<script src="./Device Data Explorer_files/sb-admin-2.js"></script>
+
+	<script>
+		var genRandom = function() {
+			return 150 + Math.round(Math.random() * 100);
+		};
+		
+		function genRandomColor() {
+		    var letters = '0123456789ABCDEF'.split('');
+		    var color = '#';
+		    for (var i = 0; i < 6; i++ ) {
+		        color += letters[Math.floor(Math.random() * 16)];
+		    }
+		    return color;
+		}
+
+		function extractSensorName(row_column_name) {
+			var temp = row_column_name.substr(1, row_column_name.length - 2);
+			return temp.split(",");
+		}
+		
+		function extractDateArray(row_date_data) {
+			var temp = row_date_data.substr(1, row_date_data.length - 2);
+			return temp.split(",");
+		}
+		
+		function extractSensorDataArray(row_sensor_data) {
+			var temp = row_sensor_data.substr(2, row_sensor_data.length - 4);
+			var array_temp = temp.split("], [");
+			var array_sensor_data = [];
+			for (var i = 0; i < array_temp.length; i++) {
+				array_sensor_data[i] = (array_temp[i]).split(",");
+			}
+			return array_sensor_data;
+		}
+		
+		function genData4Chart(date_data, sensor_data, list_sensor_name) {
+			
+			var chartData = {
+					labels : [],
+					datasets : [ {} ]
+				};
+			
+			for (var i = 0; i < list_sensor_name.length; i++) {
+
+
+				var temp_array1 = "rgba(" + genRandom() + ","
+									+ genRandom() + "," + genRandom()
+									+ "," + 0.2 + ")";
+				var temp_array2 = "rgba(" + genRandom() + ","
+									+ genRandom() + "," + genRandom()
+									+ "," + 1 + ")";
+				
+				chartData.datasets[i] = {
+					label: list_sensor_name[i],
+					fillColor : temp_array1,
+					strokeColor : temp_array2,
+					pointColor : temp_array2,
+					pointStrokeColor : "#fff",
+					pointHighlightFill : "#fff",
+					pointHighlightStroke : temp_array2,
+					data : sensor_data[i]
+				};
+			}
+
+			chartData.labels = date_data;
+			return chartData;
+		}
+		
+		// we only acquire the latest data for pie chart
+		function genData4PieChart(sensor_data, list_sensor_name) {
+			var chartData = [];
+			var last_item = sensor_data[0].length - 1;
+
+			for (var i = 0; i < list_sensor_name.length; i++) {				
+				chartData[i] = {
+						value: sensor_data[i][last_item],
+						color: genRandomColor(),
+						highlight: genRandomColor(),
+						label: list_sensor_name[i]
+				};
+			}
+			return chartData;
+		}
+
+		function lineChart(position, chartData) {
+			var position = document.getElementById(position).getContext(
+					'2d');
+			new Chart(position).Line(chartData);
+		}
+
+		function barChart(position, chartData) {
+			var position = document.getElementById(position).getContext(
+					'2d');
+			new Chart(position).Bar(chartData);
+		}
+
+		function pieChart(position, chartData) {
+			var position = document.getElementById(position).getContext(
+					'2d');
+			new Chart(position).Pie(chartData);
+		}
+		
+		var list_sensor = extractSensorName('[VL1, I2, kW3, kWh4]');
+		var date = extractDateArray('[2016-02-03 11:02:39, 2016-02-03 11:02:49, 2016-02-03 11:02:59, 2016-02-03 11:03:09, 2016-02-03 11:03:19, 2016-02-03 11:03:29]');
+		var sensor_data = extractSensorDataArray('[[5.0, 0.35, 7.99, 6.47, 0.222, 4.83], [9.04, 9.46, 8.83, 4.34, 9.46, 3.36], [2.111, 5.29, 5.5133, 3.68, 0.35, 5.13], [0.82, 4.42, 5.04, 7.14, 2.61, 6.4]]');
+		
+		data = genData4Chart(date, sensor_data, list_sensor);
+		lineChart('device-chart', data);
+		barChart('bar-chart', data);
+		
+		var Data4PieChart = genData4PieChart(sensor_data,list_sensor);	
+		pieChart('pie-chart', Data4PieChart);
+	</script>
+
+
+
+</body></html>
